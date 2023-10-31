@@ -7,6 +7,12 @@
 npm i url-parse-modify
 ```
 
+### Import
+
+```js
+import Url from 'url-parse-modify';
+```
+
 ### Parse url
 
 ```js
