@@ -12,12 +12,13 @@ type setKeyType = {
   path: string | null
 }
 
-class url_parse {
+export default
+  class Url {
   #url: string;
   #urlString: string
   constructor(url: string) {
     this.#url = url
-    const { protocol, hash, hostname, origin, password, path, port, query, username } = this.url_parse
+    const { protocol, hash, hostname, origin, password, path, port, query, username } = this.urlParse
     const queryCheck = Object?.entries(query)?.map(r => {
       return `${r?.[0]}=${r?.[1]}`
     })?.join('&');
@@ -26,11 +27,18 @@ class url_parse {
       `${protocol}://` : ""
       }${username ? username : ""}${password ? `:${password}@` : username ? "@" : ""}${hostname || ""}:${port || ''}${path || ''}${queryCheck ? `?${queryCheck}` : ""}${hash ? `#${hash}` : ""}`;
   }
-  get url_parse(): setKeyType {
+
+
+
+  get urlParse(): setKeyType {
     const url = this.#url
+
     const queryRegex = /\?([^#]*)/,
+      authRegex = /\/\/(?:([^:]+)(?::([^@]+)))?/,
+      portRegex = /:(\d+)/,
       hashRegex = /#([^]*)/,
-      urlRegex = /^(?:([^:]+):\/\/)?(?:([^:]+)(?::([^@]+))?@)?([^/:]+)(?::(\d+))?([^?#]*)(\?[^#]*)?(#.*)?/;
+      protocolRegex = /^(?:([^:]+):\/\/)?(?:([^:]+))/,
+      urlRegex = /^(?:(https?|ftp|file|www):\/\/)?(?:([^:]+)(?::([^@]+))?@)?([a-zA-Z0-9.-]+|(?:\d{1,3}\.){3}\d{1,3}|\[[a-fA-F0-9:]+\])(?::(\d+))?(\/[^?#]*)?(\?[^#]*)?(#.*)?$/;
 
     function query() {
       // Extract the query part of the URL
@@ -51,16 +59,25 @@ class url_parse {
         return {}
       }
     }
-    const matches = url.match(urlRegex)
-    const origin = matches && matches[0] || null
+
+    const matches = url.match(urlRegex);
     const hashMatch = url.match(hashRegex);
-    const hash = hashMatch && hashMatch[1];
-    const protocol = matches && matches[1];
-    const username = matches && matches[2];
-    const password = matches && matches[3];
-    const hostname = matches && matches[4];
-    const port = matches && matches[5];
-    const path = matches && matches[6];
+    const hash = hashMatch && hashMatch[1] || null;
+    const protocol = matches && matches[1] || null;
+    const username = matches && matches[2] || null;
+    const password = matches && matches[3] || null;
+    const hostname = matches && matches[4] || null;
+    const port = matches && matches[5] || null;
+    const path = matches && matches[6] || null;
+    const origin = matches && (
+      hostname ?
+        (
+          protocol ?
+            `${protocol}://${hostname}`
+            : hostname
+        )
+        : null
+    ) || null
 
     return {
       path,
@@ -75,10 +92,9 @@ class url_parse {
     }
   }
   get(key: 'hostname' | 'path' | 'protocol' | 'username' | 'origin' | 'password' | 'query' | 'port' | 'hostname' | 'origin' | 'hash') {
-    return this.url_parse[key]
+    return this.urlParse[key]
   }
   toString() {
-
     return this.#urlString
   }
   set(
@@ -86,7 +102,7 @@ class url_parse {
     value: string | { [key: string]: any }
   ) {
     const new_url = {
-      ...this.url_parse,
+      ...this.urlParse,
       [key]: value
     }
     const { protocol, hash, hostname, origin, password, path, port, query, username } = new_url
@@ -98,12 +114,6 @@ class url_parse {
       `${protocol}://` : ""
       }${username ? username : ""}${password ? `:${password}@` : username ? "@" : ""}${hostname || ""}:${port || ''}${path || ''}${queryCheck ? `?${queryCheck}` : ""}${hash ? `#${hash}` : ""}`;
   }
-
 }
-const url = 'http://localhost:8080/@3rd-Eden/path/to/resource?name=John&id=123#section2';
-const x = new url_parse(url)
-console.log(x.toString())
-x.set('hash', 'csofsofdfoof.com')
-console.log(x.toString())
 
 
