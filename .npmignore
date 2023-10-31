@@ -1,5 +1,4 @@
 node_modules/
 index.ts
 tsconfig.json
-package copy.json
 .gitignore
