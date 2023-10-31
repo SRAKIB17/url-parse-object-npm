@@ -1,23 +1,14 @@
 {
-  "name": "url-parse",
+  "name": "npm-url-parse",
   "version": "1.5.10",
   "description": "Small footprint URL parser that works seamlessly across Node.js and browser environments",
   "main": "index.js",
-  "scripts": {
-    "browserify": "rm -rf dist && mkdir -p dist && browserify index.js -s URLParse -o dist/url-parse.js",
-    "minify": "uglifyjs dist/url-parse.js --source-map -cm -o dist/url-parse.min.js",
-    "test": "c8 --reporter=lcov --reporter=text mocha test/test.js",
-    "test-browser": "node test/browser.js",
-    "prepublishOnly": "npm run browserify && npm run minify",
-    "watch": "mocha --watch test/test.js"
-  },
   "files": [
     "index.js",
     "dist"
   ],
   "repository": {
-    "type": "git",
-    "url": "https://github.com/SRAKIB17/url-parse-object-npm.git"
+    "type": "git"
   },
   "keywords": [
     "URL",
