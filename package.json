@@ -1,10 +1,12 @@
 {
-  "name": "url-parse-modification",
-  "version": "1.0.0",
+  "name": "url-parse-modify",
+  "version": "1.0.5",
   "description": "url-parse-modification is a JavaScript library designed for parsing and manipulating URLs easily. It can be used in both browser-based and Node.js applications. This library simplifies the process of working with URLs, allowing you to extract and modify different components of a URL, such as the protocol, hostname, pathname, query parameters, and more",
   "main": "index.js",
+  "types": "index.d.ts",
   "files": [
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "repository": {
     "type": "git",
@@ -22,8 +24,5 @@
     "stringify"
   ],
   "author": "SRAKIB17",
-  "license": "MIT",
-  "dependencies": {
-    "typescript": "^5.2.2"
-  }
+  "license": "MIT"
 }

@@ -1,10 +1,10 @@
 
-[![Version npm](https://img.shields.io/npm/v/npm-url-parse.svg?style=flat-square)](https://www.npmjs.com/package/npm-url-parse)
+[![Version npm](https://img.shields.io/npm/v/url-parse-modify.svg?style=flat-square)](https://www.npmjs.com/package/url-parse-modify)
 
 ## Npm install
 
 ```
-npm i url-parse-modification
+npm i url-parse-modify
 ```
 
 ### Parse url
