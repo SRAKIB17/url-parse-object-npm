@@ -35,10 +35,11 @@ export default
 
     const queryRegex = /\?([^#]*)/,
       authRegex = /\/\/(?:([^:]+)(?::([^@]+)))?/,
+      pathnameRegex = /(?:^[^:]+:\/\/[^/]+)?(\/[^?#]*)/,
       portRegex = /:(\d+)/,
       hashRegex = /#([^]*)/,
       protocolRegex = /^(?:([^:]+):\/\/)?(?:([^:]+))/,
-      urlRegex = /^(?:(https?|ftp|file|www):\/\/)?(?:([^:]+)(?::([^@]+))?@)?([a-zA-Z0-9.-]+|(?:\d{1,3}\.){3}\d{1,3}|\[[a-fA-F0-9:]+\])(?::(\d+))?(\/[^?#]*)?(\?[^#]*)?(#.*)?$/;
+      urlRegex = /^(?:(\w+):\/\/)?(?:([^:]+)(?::([^@]+))?@)?([a-zA-Z0-9.-]+|(?:\d{1,3}\.){3}\d{1,3}|\[[a-fA-F0-9:]+\])(?::(\d+))?(\/[^?#]*)?(\?[^#]*)?(#.*)?$/;
 
     function query() {
       // Extract the query part of the URL
@@ -68,13 +69,14 @@ export default
     const password = matches && matches[3] || null;
     const hostname = matches && matches[4] || null;
     const port = matches && matches[5] || null;
-    const path = matches && matches[6] || null;
+
+    const path = url?.match(pathnameRegex)?.[1] || null;
     const origin = matches && (
       hostname ?
         (
           protocol ?
-            `${protocol}://${hostname}`
-            : hostname
+            `${protocol}://${hostname}${port ? `:${port}` : ""}`
+            : `${hostname}${port ? `:${port}` : ""}`
         )
         : null
     ) || null
