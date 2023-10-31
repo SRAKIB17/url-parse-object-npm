@@ -4,7 +4,7 @@
 ## Npm install
 
 ```
-npm i npm-url-parse
+npm i url-parse-modification
 ```
 
 ### Parse url

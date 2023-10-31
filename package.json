@@ -1,5 +1,5 @@
 {
-  "name": "npm-url-parse",
+  "name": "url-parse-modification",
   "version": "1.0.0",
   "description": "Small footprint URL parser that works seamlessly across Node.js and browser environments",
   "main": "index.js",
