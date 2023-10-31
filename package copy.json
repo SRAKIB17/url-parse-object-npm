@@ -1,18 +1,19 @@
 {
-  "name": "npm-url-parse",
+  "name": "url-parse-modification",
   "version": "1.0.0",
   "description": "Small footprint URL parser that works seamlessly across Node.js and browser environments",
   "main": "index.js",
   "files": [
-    "index.js"
+    "index.js",
+    "dist"
   ],
   "repository": {
-    "type": "git",
-    "url": "https://github.com/SRAKIB17/url-parse-object-npm.git"
+    "type": "git"
   },
   "keywords": [
     "URL",
     "parser",
+    "modification",
     "uri",
     "url",
     "parse",
@@ -22,5 +23,8 @@
     "stringify"
   ],
   "author": "SRAKIB17",
-  "license": "MIT"
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.2.2"
+  }
 }

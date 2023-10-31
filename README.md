@@ -1,18 +1,10 @@
 
-```typescript
-type setKeyType = {
-  hash: string | null,
-  protocol: string | null,
-  origin: string | null,
-  username: string | null,
-  password: string | null,
-  hostname: string | null,
-  port: string | null,
-  query: {
-    [key: string]: string
-  },
-  path: string | null
-}
+[![Version npm](https://img.shields.io/npm/v/npm-url-parse.svg?style=flat-square)](https://www.npmjs.com/package/npm-url-parse)
+
+## Npm install
+
+```
+npm i npm-url-parse
 ```
 
 ### Parse url
