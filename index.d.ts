@@ -5,6 +5,7 @@ type setKeyType = {
   username: string | null;
   password: string | null;
   hostname: string | null;
+  href: string | null,
   port: string | null;
   query: { [key: string]: string };
   path: string | null;
@@ -29,6 +30,7 @@ declare class Url {
       | 'query'
       | 'port'
       | 'hostname'
+      | 'href'
       | 'origin'
       | 'hash'
   ): string | null;
@@ -39,6 +41,7 @@ declare class Url {
     key:
       | 'hostname'
       | 'path'
+      | 'href'
       | 'protocol'
       | 'username'
       | 'origin'
