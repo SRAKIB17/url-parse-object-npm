@@ -6,6 +6,7 @@ type setKeyType = {
   password: string | null,
   hostname: string | null,
   port: string | null,
+  href: string | null,
   query: {
     [key: string]: string
   },
@@ -89,6 +90,7 @@ export default
       username,
       password,
       hostname,
+      href: url,
       port,
       query: query(),
     }
