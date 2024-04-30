@@ -36,8 +36,7 @@ export default
 
     const queryRegex = /\?([^#]*)/,
       authRegex = /\/\/(?:([^:]+)(?::([^@]+)))?/,
-      pathnameRegex = /(?:^[^:]+:\/\/[^/]+)?(\/[^?#\/]*)/, // ! for without last slice: /
-      // pathnameRegex = /(?:^[^:]+:\/\/[^/]+)?(\/[^?#]*)/,
+      pathnameRegex = /(?:^[^:]+:\/\/[^/]+)?(\/[^?#]*)/,
       portRegex = /:(\d+)/,
       hashRegex = /#([^]*)/,
       protocolRegex = /^(?:([^:]+):\/\/)?(?:([^:]+))/,
