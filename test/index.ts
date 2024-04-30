@@ -54,9 +54,11 @@ export default
           return {
             [key]: value
           }
-        })
-        const queryParameters = Object.assign({}, ...paramsObj);
-        return queryParameters
+        });
+        return paramsObj.reduce(function (total: any, value: any) {
+          return { ...total, ...value }
+        }, {});
+
       } else {
         return {}
       }
